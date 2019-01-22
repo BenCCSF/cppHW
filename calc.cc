@@ -5,14 +5,14 @@ using namespace std;
 //Global varibles 
 int userin1;
 //This is where user input on what operation to use is stored
-unsigned long int fact;
+unsigned long long int fact;
 //fact is used in factorial calculations and factorials can be long - thus the type long int - also factorials are positive, thus unsigned
 float userin2, userin3;
 //userin2 and 3 are where user input on what numbers to preform operations on is stored. 
 
 int calculator() {
   //This function is the calculator - it is not in main because it is a recursive function
-  cout << "Enter an operation key to start calculationsn Enter -1 to exit the program.\n Enter any other character to list operation keys.\n ";
+  cout << "Enter an operation key to start calculations.\nEnter -1 to exit the program.\nEnter any other character to list operation keys.\n";
   cin >> ::userin1;
   switch(::userin1) {
     case -1:
