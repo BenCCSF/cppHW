@@ -45,7 +45,7 @@ int findFact(float userin) {
     sciNot += (num[dig-i-1]) * pow(10.0, (-1 * i));
    
   }
-  cout << "This is equivelant to " << sciNot << " x 10^" << (dig - 1) << endl;
+  cout << "This is equivalent to " << sciNot << " x 10^" << (dig - 1) << endl;
   return 0;
 }
 
