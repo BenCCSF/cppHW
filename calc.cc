@@ -1,11 +1,12 @@
 #include <iostream>
 #include <math.h>
+//This is only used for sqrt
+#include <string>
 using namespace std;
 
-int findFact(float userin) {
-  //This is its own function because it is complicated and it keeps calculator() cleaner
-  //This function prints a factorial to cout (max output of 500 digits)
-  unsigned short int num[500];
+void printFact(float userin, int size = 500) {
+  //This function prints a factorial to cout (max output of <size> digits)
+  unsigned short int num[size];
   num[0] = 1; 
   //This is an array where each element is one digit of a number this allows for long numbers, numbers are stored backwards
   //Ex: 123 would be {3, 2, 1}
@@ -46,8 +47,65 @@ int findFact(float userin) {
    
   }
   cout << "This is equivalent to " << sciNot << " x 10^" << (dig - 1) << endl;
-  return 0;
 }
+void menu() {
+  //prints menu
+  cout << "Listing operation keys in format: key. <effect>\n";
+  cout << "1. Addition \n";
+  cout << "2. Subtraction \n";
+  cout << "3. Multiplication \n";
+  cout << "4. Division \n";
+  cout << "5. Power \n";
+  cout << "6. Square Root \n";
+  cout << "7. Absolute Value \n";
+  cout << "8. Floor\n";
+  cout << "9. Ceiling\n";
+  cout << "10. Factorial\n";
+}
+float power(float b, int x) {
+  //Returns power of b^x, x cannot be fractional
+  float temp = b;
+  //For holding temporary value
+  if (x >= 1) {
+    //Positive powers
+    for (int i = 1; i < x; i++) {
+      temp = temp * b;
+    }
+  }
+  else {
+    //Negative powers
+    for (int i = 1; i > x; i--) {
+      temp = temp / b;
+    }
+  }
+  return temp;
+}
+int flr(float userin) {
+  //Finds floor of number
+  return static_cast<int>(userin);
+}
+int cel(float userin) {
+  //Finds ceiling of number
+  if (userin > flr(userin)) {
+    return (static_cast<int>(userin) + 1);
+  }
+  else {
+    return static_cast<int>(userin);
+  }
+  
+}
+float absv(float userin) {
+  //Finds absolute value of number 
+  if (userin < 0) {
+    return (-1.0 * userin);
+  }
+  else {
+    return userin;
+  }
+}
+
+
+
 
 int calculator() {
   int userin1;
@@ -100,7 +158,7 @@ int calculator() {
       cin >> userin2;
       cout << "Enter the power the base will be raised to\n";
       cin >> userin3;
-      cout << "The sum of your numbers is: " << pow(userin2, userin3) << endl;
+      cout << "The sum of your numbers is: " << power(userin2, userin3) << endl;
       break;
     case 6:
       //Square Root 
@@ -112,42 +170,31 @@ int calculator() {
       //Absolute Value
       cout << "Enter the number you wish to find the absolute value of\n";
       cin >> userin2;
-      cout << "The absolute value of your number is " << fabs(userin2) << endl;
+      cout << "The absolute value of your number is " << absv(userin2) << endl;
       break;
     case 8:
       //Floor
       cout << "Enter the number you wish to find the floor of\n";
       cin >> userin2;
-      cout << "The floor of your number is " << floor(userin2) << endl;
+      cout << "The floor of your number is " << flr(userin2) << endl;
       break;
     case 9:
       //Ceiling
       cout << "Enter the number you wish to find the ceiling of\n";
       cin >> userin2;
-      cout << "The ceiling of your number is " << ceil(userin2) << endl;
+      cout << "The ceiling of your number is " << cel(userin2) << endl;
       break;
     case 10:
       //Factorial
       cout << "Enter the number you wish to find the factorial of\n";
       cin >> userin2;
-      findFact(userin2);
+      printFact(userin2);
       break;
     default:
-      cout << "Listing operation keys in format: key. <effect>\n";
-      cout << "1. Addition \n";
-      cout << "2. Subtraction \n";
-      cout << "3. Multiplication \n";
-      cout << "4. Division \n";
-      cout << "5. Power \n";
-      cout << "6. Square Root \n";
-      cout << "7. Absolute Value \n";
-      cout << "8. Floor\n";
-      cout << "9. Ceiling\n";
-      cout << "10. Factorial\n";
+      menu();
   }
   calculator();
   //Using a recursive function allows the program to preform a theoretical infinate number of calculations
-  return 0;
 }
 
 int main() {
