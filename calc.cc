@@ -87,8 +87,8 @@ void printPow() {
 }
 void printSqrt() {
     double userIn;
-    bool imag; //Is the number imaginary
-    double root;
+    bool imag = false; //Is the number imaginary
+    double root = 1;
     cout << "Enter the number you wish to find the square root of" << endl;
     cin >> userIn; 
     if (userIn < 0) {
@@ -100,6 +100,10 @@ void printSqrt() {
         root = (root + (userIn/root)) / 2;
     }
     cout << "The square root of your number is " << root;
+    if (imag) {
+        cout << 'i';
+    }
+    cout << endl;
 }
 void printAbs() {
     //Finds and prints absolute value
