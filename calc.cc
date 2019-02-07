@@ -27,10 +27,21 @@ void getuserIn(float &userIn1, float &userIn2, const string &mathVerb) {
     cin >> userIn2;
 }
 float findPower(float b, int x) {
-    //Takes in a base (b) and a positive power (x) and returns b^x
-    float temp = b;
-    for (int i = 1; i < x; i++) {
+    //Takes in a base (b) and power (x) and returns b^x
+    
+    float temp = 1;
+    if (x >= 0) {
+        for (int i = 0; i < x; i++) {
         temp = temp * b;
+        }
+    }
+    else {
+        //Negative power
+        x = x * -1;
+        for (int i = 0; i < x; i++) {
+        temp = temp * b;
+        }
+        temp = 1/temp;
     }
     return temp;
 }
@@ -75,14 +86,7 @@ void printPow() {
     cout << "Enter the power the base will be raised to" << endl;
     cin >> x;
     float total;
-    if (x >= 1) {
-        //Positive powers
-        total = findPower(b, x);
-    }
-    else {
-        //Negative powers
-        total = 1.0 / findPower(b, (-1 * x));
-    }
+    total = findPower(b, x);
     cout << b << " raised to the power of " << x << " is " << total << endl;
 }
 void printSqrt() {
@@ -175,14 +179,16 @@ void printFact(const int SIZE = 500) {
     cout << endl;
     //Printing in scientific notation
     sciNot = 0;
-    for (int i = 0; i < 6; i ++) {
+    int prec = 6; //Used for how much precision our scientific notation number should have
+    if (dig < 6) {
+        prec = dig;
+    }
+    for (int i = 0; i < prec; i ++) {
         //Change number of loops to change precision of scientific notation (more digits could cause problems with memory)
         sciNot += (num[dig-i-1]) * findPower(10.0, (-1 * i));
-     
     }
     cout << "This is equivalent to " << sciNot << " x 10^" << (dig - 1) << endl;
 }
-
 
 bool calculator() {
     //This function is the calculator switch statment
