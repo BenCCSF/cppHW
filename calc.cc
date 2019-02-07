@@ -116,11 +116,12 @@ void printAbs() {
     cout << "The absolute value of your number is " << userIn << endl;
 }
 void printFlr() {
-    int userIn;
+    float userIn;
+    int flr;
     cout << "Enter the number you want to find the floor of" << endl;
     cin >> userIn;
-    //Because userIn is an int, no farther operations are required
-    cout << "The floor of your number is " << userIn << endl;
+    flr = static_cast<int>(userIn);
+    cout << "The floor of your number is " << flr << endl;
 }
 void printCel() {
     //Prints ceiling of number
