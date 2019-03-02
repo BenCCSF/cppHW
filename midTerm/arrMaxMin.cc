@@ -49,4 +49,5 @@ int main() {
     }
     cout << "The maximum is " << arr[max] << endl;
     cout << "The minimum is " << arr[min] << endl;
+    return 0;
 }
