@@ -1,9 +1,10 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
 #ifndef CONTACT_H
 #define CONTACT_H
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
 
 class Contact {
     private:
@@ -43,5 +44,7 @@ class Contact {
         
         //Other methods
         void print() const;
+        void save(ofstream&) const; //Needs open stream
+        void load(string);
 };
 #endif

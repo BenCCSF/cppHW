@@ -52,11 +52,14 @@ bool mainMenu(ContactList* list) {
 }
 int main() {
     ContactList* list = new ContactList();
+    list->loadList();
     //List is really a pointer to our list object, which we only need one of
     bool cont = true; //Should the program continue
     cout << "This is your contact book" << endl;
     do {
         cont = mainMenu(list);
     } while(cont);
+    list->saveList();
+    delete list;
     return 0;
 }

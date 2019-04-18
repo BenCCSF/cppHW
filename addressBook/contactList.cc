@@ -1,5 +1,6 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "contact.h"
 #include "contactList.h"
 using namespace std;
@@ -13,13 +14,6 @@ ContactList::ContactList() {
     head->setAddress("50 Frida Kahlo Way, San Francisco, CA 94112");
     head->setPhoneNumber("(000)000-0000");
 }
-
-//Methods
-/*
-These should work similar to the way they worked in the previous program:
-Each function should handle user input and output along with doing its oppteration. Old version is at 
-https://repl.it/@BenjaminAlexan1/Address-Book-V20
-*/
 
 //These methods are used in other methods
 Contact* ContactList::getNth(const int &index) const {
@@ -253,3 +247,42 @@ void ContactList::findContact() {
         cout << "Error: that contact does not exist" << endl;
     }
 }
+
+void ContactList::saveList() {
+    ofstream outs ("addressbook.txt");
+    Contact* iter = head;
+    do {
+        iter->save(outs);
+        iter = iter->getNext();
+    } while (iter != nullptr);
+    outs.close();
+    
+}
+void ContactList::loadList() {
+    Contact* iter = head;
+    string data;
+    ifstream ins ("addressbook.txt");
+    if (ins.is_open()) {
+        if (getline(ins, data)) {
+            iter->load(data);
+            while (getline(ins, data)) {
+                if (iter->getNext() != nullptr) {
+                    iter = iter->getNext();
+                    iter->load(data);
+                }
+                else {
+                    iter->setNext(new Contact);
+                    numContacts++;
+                    iter = iter->getNext();
+                    iter->load(data);
+                    
+                }
+            }
+        }
+        
+        ins.close();
+    }
+    else {
+        cout << "Warning: No Contacts Loaded" << endl;
+    }
+} 

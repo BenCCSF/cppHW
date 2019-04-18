@@ -1,10 +1,10 @@
-
-#include <iostream>
-#include "contact.h"
-using namespace std;
-
 #ifndef CONTACTLIST_H
 #define CONTACTLIST_H
+
+#include <iostream>
+#include <fstream>
+#include "contact.h"
+using namespace std;
 
 class ContactList {
     private:
@@ -24,6 +24,8 @@ class ContactList {
         void delContact();
         void listContacts();
         void findContact();
+        void saveList();
+        void loadList(); 
 };
 
 #endif
