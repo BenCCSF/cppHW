@@ -5,10 +5,6 @@ using namespace std;
 /*
 While this is the main file, most functionality is in the methods defined 
 in contactList.cpp
-
-Possible changes/improvments:
-- change the sort function so it doesnt need an array
-- make a menu object so it is 100% oop
 */
 
 bool mainMenu(ContactList* list) {

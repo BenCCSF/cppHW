@@ -3,20 +3,20 @@
 
 #include <iostream>
 #include <fstream>
+#include <list>
+#include <iterator>
 #include "contact.h"
 using namespace std;
 
 class ContactList {
     private:
-        Contact *head;
-        int numContacts;
+        list <Contact*> contacts;
     public:
-        ContactList(); //Initializes list with one element as head (Full of null values)
-
+        //ContactList();
+        ~ContactList();
         //Methods used by other methods in this class
         Contact* getNth(const int &index) const;
         void printList() const; 
-        void sortList();
         
         //Methods called by main menu
         void addContact();

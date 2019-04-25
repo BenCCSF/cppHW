@@ -8,7 +8,6 @@ using namespace std;
 
 class Contact {
     private:
-        Contact* next;
         string firstName;
         string lastName;
         string address;
@@ -18,9 +17,11 @@ class Contact {
         //Contstructor
         Contact();
 
+        //Operator overload
+        friend bool operator < (Contact const &c1, Contact const &c2)
+        { return (c1.getLastName() < c2.getLastName()); }
+
         //Setters
-        void setNext(Contact* const &inNext)
-        { next = inNext; }
         void setFirstName(const string &inFirstName)
         { firstName = inFirstName; }
         void setLastName(const string &inLastName)
@@ -31,8 +32,6 @@ class Contact {
         { phoneNumber = inPhoneNumber; }
 
         //Getters
-        Contact* getNext() const 
-        { return next; }
         string getFirstName() const
         { return firstName; }
         string getLastName() const 
