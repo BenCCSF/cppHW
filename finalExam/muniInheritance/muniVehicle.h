@@ -9,7 +9,7 @@ class MuniVehicle {
         MuniVehicle()
         { totalFares = 0; }
   
-        int getTotalFares()
+        int getTotalFares() const //As a getter, this should not be able to change the object
         { return totalFares; }
 
         virtual void paidFare()
